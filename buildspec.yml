@@ -5,10 +5,15 @@ phases:
     runtime-versions:
       python: 3.9
     commands:
+      - echo "Installing dependencies"
       - pip install -r requirements.txt
+
   build:
     commands:
       - echo "Build successful"
+      - echo "Starting Flask application"
+      - nohup python3 main.py > flask.log 2>&1 &  # Start the Flask app in the background
+
 artifacts:
   files:
     - '**/*'
